@@ -12,20 +12,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    document.getElementById('answer').addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    })
+    
     runGame ("addition");
 });
 /**
  * main game function function, for when the script is loanded, as well as when the user's answer has been processed
  */
 function runGame(gameType) {
+    document.getElementById('answer').value = "";
+    document.getElementById('answer').focus();
+
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
 
     if (gameType === "addition") {
         displAdd (num1, num2);
     }
+    else if (gameType === "multiplication") {
+        displMult (num1, num2);
+    }
+    else if (gameType === "subtraction") {
+        displSubt(num1, num2);
+    }
+
+    else if (gameType === "division") {
+        displDiv(num1, num2);
+    }
     else {
-        alert(`${gameType}`)
+        alert(`${gameType}`);
     }
 }
 
@@ -52,6 +71,12 @@ function calcCorrectAnswer() {
 
     if (operator === "+") {
         return [operand1 + operand2, 'addition']
+    } else if (operator === "x") {
+        return [operand1 * operand2, 'multiplication']
+    } else if (operator === "-") {
+        return [operand1 - operand2, 'subtraction'];
+    } else if (operator === ":") {
+        return [operand1 / operand2, 'division'];
     } else {
         alert(`Unimplemented operator: ${operator}`);
         throw `Unimplemented operator: ${operator}`;
@@ -74,14 +99,24 @@ function displAdd(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displSubt() {
-
+    function displSubt(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
+        document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operator').textContent = "-";
 }
 
-function displMult() {
-
+function displMult(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "x";
 }
 
-function displDiv() {
-
+    function displDiv(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    if (document.getElementById('operand2').textContent != "0") {
+        document.getElementById('operand2').textContent = operand2;
+    } else {
+        operand2 = 1;
+    }
+    document.getElementById('operator').textContent = ":";
 }
