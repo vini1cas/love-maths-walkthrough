@@ -101,7 +101,7 @@ function displAdd(operand1, operand2) {
 
     function displSubt(operand1, operand2) {
     document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
-        document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
     document.getElementById('operator').textContent = "-";
 }
 
@@ -112,11 +112,9 @@ function displMult(operand1, operand2) {
 }
 
     function displDiv(operand1, operand2) {
-    document.getElementById('operand1').textContent = operand1;
-    if (document.getElementById('operand2').textContent != "0") {
-        document.getElementById('operand2').textContent = operand2;
-    } else {
-        operand2 = 1;
-    }
+     operand1 = num1 * num2;
+     operand2 = num2;
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
     document.getElementById('operator').textContent = ":";
 }
