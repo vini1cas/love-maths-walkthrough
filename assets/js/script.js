@@ -35,8 +35,10 @@ function checkAnswer() {
 
     if (userAnswer === calcAnswer[0]) {
         alert("Congrats! You got the right answer!");
+        incrScore();
     } else {
         alert(`Awwwww, shoot... You guessed ${userAnswer}. The correct answer was ${calcAnswer}.`);
+        incrWrongAnswer;
     }
 
     runGame (calcAnswer[1]);
@@ -57,11 +59,13 @@ function calcCorrectAnswer() {
 }
 
 function incrScore() {
-
+    let score = parseInt.document.getElementById('score').textContent;
+    document.getElementById('score').textContent = ++score;
 }
 
 function incrWrongAnswer() {
-
+    let incorrect = parseInt.document.getElementById('incorrect').textContent;
+    document.getElementById('incorrect').textContent = ++incorrect;
 }
 
 function displAdd(operand1, operand2) {
